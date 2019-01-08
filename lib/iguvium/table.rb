@@ -70,7 +70,7 @@ module Iguvium
     # @return [Iguvium::Table] with added open-cell rows and columns
     def heal
       heal_rows
-      heal_cols
+      heal_cols rescue nil
       self
     end
 

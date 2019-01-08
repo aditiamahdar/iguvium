@@ -74,7 +74,7 @@ module Iguvium
       image = Image.read(@path, @reader_page.number, @opts)
       recognized = CV.new(image).recognize
       @lines = recognized[:lines]
-      @boxes = recognized[:boxes].reject { |box| box_empty?(box) }
+      @boxes = recognized[:boxes].reject { |box| box.first.nil? || box_empty?(box) }
       @tables = @boxes.map { |box| Table.new(box, self) }.reverse
       self
     end
